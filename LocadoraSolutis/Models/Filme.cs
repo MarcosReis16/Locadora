@@ -20,6 +20,7 @@ namespace LocadoraSolutis.Models
 
         public Filme(int codigo, string nome, Genero genero, FaixaEtaria faixa, decimal valor)
         {
+
             this.CodigoFilme = codigo;
             this.NomeFilme = nome;
             this.GeneroFilme = genero;
