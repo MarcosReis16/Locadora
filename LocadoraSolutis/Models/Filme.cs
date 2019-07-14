@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using LocadoraSolutis.Auxiliares;
@@ -8,6 +9,7 @@ namespace LocadoraSolutis.Models
 {
     public class Filme
     {
+        [Key]
         public int CodigoFilme { get; private set; }
 
         public string NomeFilme { get; private set; }

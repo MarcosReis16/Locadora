@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,9 +9,13 @@ namespace LocadoraSolutis.Models
 {
     public class Aluguel
     {
+        
+        [Key]
         public int IdAluguel { get; private set; }
+        [ForeignKey("IdCliente")]
         public int IdCliente { get; set; }
-        public List<Filme> Filmes { get; set; }
+        [ForeignKey("codigoFilmes")]
+        public List<int> codigoFilmes { get; set; }
 
         public decimal ValorTotal { get; set; }
 
@@ -17,10 +23,10 @@ namespace LocadoraSolutis.Models
 
         public DateTime DataDevolucao { get; set; }
 
-        public Aluguel(int id, List<Filme> filmes, DateTime dataemprestimo)
+        public Aluguel(int id, List<int> filmes, DateTime dataemprestimo)
         {
             this.IdCliente = id;
-            this.Filmes = filmes;
+            this.codigoFilmes = filmes;
             this.DataEmprestimo = dataemprestimo;
         }
     }
