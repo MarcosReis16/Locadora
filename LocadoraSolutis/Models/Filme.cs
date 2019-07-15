@@ -20,7 +20,9 @@ namespace LocadoraSolutis.Models
 
         public decimal ValorEmprestimo { get; set; }
 
-        public Filme(int codigo, string nome, Genero genero, FaixaEtaria faixa, decimal valor)
+        public int QtdEstoque { get; set; }
+
+        public Filme(int codigo, string nome, Genero genero, FaixaEtaria faixa, decimal valor, int qtd)
         {
 
             this.CodigoFilme = codigo;
@@ -28,6 +30,7 @@ namespace LocadoraSolutis.Models
             this.GeneroFilme = genero;
             this.FaixaEtariaFilme = faixa;
             this.ValorEmprestimo = valor;
+            this.QtdEstoque = qtd;
 
         }
 
