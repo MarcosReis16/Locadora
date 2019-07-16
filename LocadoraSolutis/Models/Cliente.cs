@@ -12,10 +12,6 @@ namespace LocadoraSolutis.Models
         public int IdCliente { get; set; }
         public string NomeCliente { get; set; }
         public string CPFCliente { get; set; }
-
-        public decimal ValorDivida { get; set; }
-
-
-
+        
     }
 }

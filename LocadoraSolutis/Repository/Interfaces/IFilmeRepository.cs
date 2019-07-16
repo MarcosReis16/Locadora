@@ -8,11 +8,13 @@ namespace LocadoraSolutis.Repository
 {
     interface IFilmeRepository
     {
-        bool cadastraFilme(Filme filme);
-        IEnumerable<Filme> retornaBibliotecaFilmes();
-        IEnumerable<Filme> retornaFilmesSemEstoque();
-        void editaFilme(int codigo);
-        bool removeFilme(int codigo);
+        bool CadastrarFilme(Filme filme);
+        IEnumerable<Filme> RetornarBibliotecaFilmes();
+        IEnumerable<Filme> RetornarFilmesSemEstoque();
+        void EditarFilme(int codigo);
+        bool RemoverFilme(int codigo);
+
+        Filme BuscarFilmePorCodigo(int codigo);
 
         
 

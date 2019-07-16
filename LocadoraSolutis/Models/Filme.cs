@@ -10,13 +10,13 @@ namespace LocadoraSolutis.Models
     public class Filme
     {
         [Key]
-        public int CodigoFilme { get; private set; }
+        public int CodigoFilme { get; set; }
 
-        public string NomeFilme { get; private set; }
+        public string NomeFilme { get; set; }
 
-        public Genero GeneroFilme { get; private set; }
+        public Genero GeneroFilme { get; set; }
 
-        public FaixaEtaria FaixaEtariaFilme { get; private set; }
+        public FaixaEtaria FaixaEtariaFilme { get; set; }
 
         public decimal ValorEmprestimo { get; set; }
 

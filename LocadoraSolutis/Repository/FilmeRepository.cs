@@ -16,7 +16,7 @@ namespace LocadoraSolutis.Repository
             _context = context;
         }
 
-        public bool cadastraFilme(Filme filme)
+        public bool CadastrarFilme(Filme filme)
         {
             try
             {
@@ -31,6 +31,54 @@ namespace LocadoraSolutis.Repository
             }
             
         }
-        
+
+        public void EditarFilme(Filme filme)
+        {
+            try
+            {
+                _context.Filmes.Update(filme);
+                _context.SaveChanges();
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            
+        }
+
+        private Filme BuscarFilmeporCodigo(int codigo)
+        {
+            return _context.Filmes.FirstOrDefault(m => m.CodigoFilme == codigo);
+        }
+
+        public bool RemoverFilme(int codigo)
+        {
+            try
+            {
+                var filme = _context.Filmes.First(m => m.CodigoFilme == codigo);
+                if(filme != null)
+                {
+                    _context.Filmes.Remove(filme);
+                    _context.SaveChanges();
+                    return true;
+                }
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return false;
+            
+        }
+
+        IEnumerable<Filme> IFilmeRepository.RetornarBibliotecaFilmes()
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerable<Filme> IFilmeRepository.RetornarFilmesSemEstoque()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -14,8 +14,9 @@ namespace LocadoraSolutis.Models
         public int IdAluguel { get; private set; }
         [ForeignKey("IdCliente")]
         public int IdCliente { get; set; }
+
         [ForeignKey("codigoFilmes")]
-        public List<int> codigoFilmes { get; set; }
+        public List<int> CodigoFilmes { get; set; }
 
         public decimal ValorTotal { get; set; }
 
@@ -23,10 +24,12 @@ namespace LocadoraSolutis.Models
 
         public DateTime DataDevolucao { get; set; }
 
+        public bool StatusEmprestimo { get; set; }
+
         public Aluguel(int id, List<int> filmes)
         {
             this.IdCliente = id;
-            this.codigoFilmes = filmes;
+            this.CodigoFilmes = filmes;
             this.DataEmprestimo = DateTime.Now.Date;
             this.DataDevolucao = this.DataEmprestimo.AddDays(5);
         }
