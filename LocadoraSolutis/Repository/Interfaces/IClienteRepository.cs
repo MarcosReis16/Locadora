@@ -9,7 +9,7 @@ namespace LocadoraSolutis.Repository
     interface IClienteRepository
     {
         bool cadastraCliente(Cliente cliente);
-        void editaCliente(int codigo);
+        void editaCliente(Cliente cliente);
         bool removeCliente(int codigo);
         IEnumerable<Cliente> retornaBibliotecaClientes();
         IEnumerable<Cliente> retornaClientesInadimplentes();

@@ -74,7 +74,7 @@ namespace LocadoraSolutis.Repository
 
         public IEnumerable<Filme> RetornarBibliotecaFilmes()
         {
-            return _context.Filmes.ToList();
+            return _context.Filmes.OrderBy(m => m.NomeFilme).ToList();
         }
 
         public IEnumerable<Filme> RetornarFilmesSemEstoque()
