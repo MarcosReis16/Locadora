@@ -11,7 +11,7 @@ namespace LocadoraSolutis.Repository
         bool CadastrarFilme(Filme filme);
         IEnumerable<Filme> RetornarBibliotecaFilmes();
         IEnumerable<Filme> RetornarFilmesSemEstoque();
-        void EditarFilme(int codigo);
+        void EditarFilme(Filme filme);
         bool RemoverFilme(int codigo);
 
         Filme BuscarFilmePorCodigo(int codigo);

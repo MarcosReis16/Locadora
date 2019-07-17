@@ -46,10 +46,11 @@ namespace LocadoraSolutis.Repository
             
         }
 
-        private Filme BuscarFilmeporCodigo(int codigo)
+        public Filme BuscarFilmePorCodigo(int codigo)
         {
             return _context.Filmes.FirstOrDefault(m => m.CodigoFilme == codigo);
         }
+
 
         public bool RemoverFilme(int codigo)
         {
@@ -71,14 +72,16 @@ namespace LocadoraSolutis.Repository
             
         }
 
-        IEnumerable<Filme> IFilmeRepository.RetornarBibliotecaFilmes()
+        public IEnumerable<Filme> RetornarBibliotecaFilmes()
         {
-            throw new NotImplementedException();
+            return _context.Filmes.ToList();
         }
 
-        IEnumerable<Filme> IFilmeRepository.RetornarFilmesSemEstoque()
+        public IEnumerable<Filme> RetornarFilmesSemEstoque()
         {
-            throw new NotImplementedException();
+            return _context.Filmes.Where(m => m.QtdEstoque == 0).ToList();
         }
+
+        
     }
 }

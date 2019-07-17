@@ -7,5 +7,6 @@ namespace LocadoraSolutis.Repository
 {
     public class ClienteRepository
     {
+
     }
 }
