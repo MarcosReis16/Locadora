@@ -16,7 +16,7 @@ namespace LocadoraSolutis.Repository
             _context = context;
         }
 
-        public bool cadastraCliente(Cliente cliente)
+        public bool CadastraCliente(Cliente cliente)
         {
             try
             {
@@ -31,7 +31,7 @@ namespace LocadoraSolutis.Repository
             return false;
         }
 
-        public void editaCliente(Cliente cliente)
+        public void EditaCliente(Cliente cliente)
         {
             try
             {
@@ -44,7 +44,7 @@ namespace LocadoraSolutis.Repository
             }
         }
 
-        public bool removeCliente(int codigo)
+        public bool RemoveCliente(int codigo)
         {
             try
             {
@@ -64,14 +64,14 @@ namespace LocadoraSolutis.Repository
             
         }
 
-        public IEnumerable<Cliente> retornaBibliotecaClientes()
+        public IEnumerable<Cliente> RetornaBibliotecaClientes()
         {
             return _context.Clientes.OrderBy(m => m.NomeCliente).ToList();
         }
 
-        public IEnumerable<Cliente> retornaClientesInadimplentes()
+        public IEnumerable<Cliente> RetornaClientesInadimplentes()
         {
-            throw new NotImplementedException();
+            return _context.Clientes.Join<>
         }
     }
 }

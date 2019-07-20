@@ -19,6 +19,17 @@ namespace LocadoraSolutis.Contexto
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Aluguel> Alugueis { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Filme>().HasKey(m => m.IdFilme);
+            modelBuilder.Entity<Cliente>().HasKey(m => m.IdCliente);
+            modelBuilder.Entity<Aluguel>().HasKey(m => m.IdAluguel);
+
+            modelBuilder.Entity<Aluguel>().Property(m => m.DataEmprestimo).HasDefaultValueSql("GetDate()");
+            
+
+
+        }
 
 
     }

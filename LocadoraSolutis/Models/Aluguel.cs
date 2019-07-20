@@ -10,13 +10,13 @@ namespace LocadoraSolutis.Models
     public class Aluguel
     {
         
-        [Key]
+        
         public int IdAluguel { get; private set; }
-        [ForeignKey("IdCliente")]
+        
         public int IdCliente { get; set; }
 
-        [ForeignKey("codigoFilmes")]
-        public List<int> CodigoFilmes { get; set; }
+        
+        public List<Filme> CodigoFilmes { get; set; }
 
         public decimal ValorTotal { get; set; }
 

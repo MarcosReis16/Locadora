@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using LocadoraSolutis.Repository;
 
 namespace LocadoraSolutis
 {
@@ -30,6 +31,9 @@ namespace LocadoraSolutis
             services.AddEntityFrameworkNpgsql().AddDbContext<LocadoraContext>(options => 
                 options.UseNpgsql(Configuration.GetConnectionString("LocadoraDB")));
 
+            services.AddSingleton<IClienteRepository, ClienteRepository>();
+            services.AddSingleton<IFilmeRepository, FilmeRepository>();
+            services.AddSingleton<IAluguelRepository, AluguelRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

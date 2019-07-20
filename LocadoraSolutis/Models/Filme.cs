@@ -9,7 +9,9 @@ namespace LocadoraSolutis.Models
 {
     public class Filme
     {
-        [Key]
+        
+        public int IdFilme { get; set; }
+
         public int CodigoFilme { get; set; }
 
         public string NomeFilme { get; set; }
@@ -22,17 +24,17 @@ namespace LocadoraSolutis.Models
 
         public int QtdEstoque { get; set; }
 
-        public Filme(int codigo, string nome, Genero genero, FaixaEtaria faixa, decimal valor, int qtd)
-        {
+        //public Filme(int codigo, string nome, Genero genero, FaixaEtaria faixa, decimal valor, int qtd)
+        //{
 
-            this.CodigoFilme = codigo;
-            this.NomeFilme = nome;
-            this.GeneroFilme = genero;
-            this.FaixaEtariaFilme = faixa;
-            this.ValorEmprestimo = valor;
-            this.QtdEstoque = qtd;
+        //    this.CodigoFilme = codigo;
+        //    this.NomeFilme = nome;
+        //    this.GeneroFilme = genero;
+        //    this.FaixaEtariaFilme = faixa;
+        //    this.ValorEmprestimo = valor;
+        //    this.QtdEstoque = qtd;
 
-        }
+        //}
 
 
     }
