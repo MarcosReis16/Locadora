@@ -12,6 +12,8 @@ namespace LocadoraSolutis.Models
         public int IdCliente { get; set; }
         public string NomeCliente { get; set; }
         public string CPFCliente { get; set; }
+
+        public List<Aluguel> Alugueis { get; set; }
         
     }
 }

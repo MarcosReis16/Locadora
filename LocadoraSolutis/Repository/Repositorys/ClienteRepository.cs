@@ -16,19 +16,19 @@ namespace LocadoraSolutis.Repository
             _context = context;
         }
 
-        public bool CadastraCliente(Cliente cliente)
+        public void CadastraCliente(Cliente cliente)
         {
             try
             {
                 _context.Clientes.Add(cliente);
                 _context.SaveChanges();
-                return true;
+                
             }
             catch(Exception e)
             {
-                Console.WriteLine(e.Message);
+                throw new Exception(e.Message);
             }
-            return false;
+            
         }
 
         public void EditaCliente(Cliente cliente)
@@ -71,7 +71,9 @@ namespace LocadoraSolutis.Repository
 
         public IEnumerable<Cliente> RetornaClientesInadimplentes()
         {
-            return _context.Clientes.Join<>
+            return _context.Alugueis
+                .Where(m => m.StatusEmprestimo == true && m.DataDevolucao <= DateTime.Today)
+                .Select(m => m.Cliente).ToList();
         }
     }
 }

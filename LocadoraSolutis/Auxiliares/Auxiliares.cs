@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace LocadoraSolutis.Auxiliares
 {
-    public enum Genero
+    public enum Genero : int
     {
         Aventura,
         Romance,
@@ -17,12 +17,12 @@ namespace LocadoraSolutis.Auxiliares
         Documentário
     }
 
-    public enum FaixaEtaria
+    public enum FaixaEtaria : int
     {
-        Livre,
-        Dez,
-        Catorze,
-        Dezesseis,
-        Dezoito
+        Livre = 0,
+        Dez = 10,
+        Catorze = 14,
+        Dezesseis = 16,
+        Dezoito = 18
     }
 }

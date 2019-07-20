@@ -31,9 +31,9 @@ namespace LocadoraSolutis
             services.AddEntityFrameworkNpgsql().AddDbContext<LocadoraContext>(options => 
                 options.UseNpgsql(Configuration.GetConnectionString("LocadoraDB")));
 
-            services.AddSingleton<IClienteRepository, ClienteRepository>();
-            services.AddSingleton<IFilmeRepository, FilmeRepository>();
-            services.AddSingleton<IAluguelRepository, AluguelRepository>();
+            services.AddScoped<IClienteRepository, ClienteRepository>();
+            services.AddScoped<IFilmeRepository, FilmeRepository>();
+            services.AddScoped<IAluguelRepository, AluguelRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

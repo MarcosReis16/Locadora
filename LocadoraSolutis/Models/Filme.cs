@@ -24,6 +24,9 @@ namespace LocadoraSolutis.Models
 
         public int QtdEstoque { get; set; }
 
+        public List<AluguelFilme> AluguelFilmes { get; set; }
+
+
         //public Filme(int codigo, string nome, Genero genero, FaixaEtaria faixa, decimal valor, int qtd)
         //{
 

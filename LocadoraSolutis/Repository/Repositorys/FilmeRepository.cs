@@ -16,20 +16,19 @@ namespace LocadoraSolutis.Repository
             _context = context;
         }
 
-        public bool CadastrarFilme(Filme filme)
+        public void CadastrarFilme(Filme filme)
         {
             try
             {
                 _context.Filmes.Add(filme);
                 _context.SaveChanges();
-                return true;
+                
             }
             catch(Exception e)
             {
-                Console.WriteLine(e.Message);
-                return false;
+                throw new Exception(e.Message);
             }
-            
+
         }
 
         public void EditarFilme(Filme filme)
@@ -41,7 +40,7 @@ namespace LocadoraSolutis.Repository
             }
             catch(Exception e)
             {
-                Console.WriteLine(e.Message);
+                throw new Exception(e.Message);
             }
             
         }
@@ -66,7 +65,7 @@ namespace LocadoraSolutis.Repository
             }
             catch(Exception e)
             {
-                Console.WriteLine(e.Message);
+                throw new Exception(e.Message);
             }
             return false;
             
@@ -74,7 +73,7 @@ namespace LocadoraSolutis.Repository
 
         public IEnumerable<Filme> RetornarBibliotecaFilmes()
         {
-            return _context.Filmes.OrderBy(m => m.NomeFilme).ToList();
+            return _context.Filmes.OrderBy(m => m.NomeFilme).ThenBy(m => m.IdFilme).ToList();
         }
 
         public IEnumerable<Filme> RetornarFilmesSemEstoque()
