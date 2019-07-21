@@ -17,6 +17,14 @@ namespace LocadoraSolutis.Models
 
         }
 
+        public AluguelFilme(Filme filme, Aluguel aluguel)
+        {
+            this.IdFilme = filme.IdFilme;
+            this.IdAluguel = aluguel.IdAluguel;
+            this.Filme = filme;
+            this.Aluguel = aluguel;
+        }
+
     }
 
 }

@@ -47,7 +47,7 @@ namespace LocadoraSolutis.Controllers
                 var resultado = _repository.RetornaClientePorNome(nome);
 
                 if (resultado.Any())
-                    return Ok();
+                    return Ok(resultado);
 
                 return NotFound();
 
