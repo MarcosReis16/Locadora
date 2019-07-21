@@ -30,6 +30,8 @@ namespace LocadoraSolutis.Models
         public Aluguel(int id)
         {
             this.IdCliente = id;
+            this.StatusEmprestimo = true;
+            this.ValorTotal = 0;
             this.DataEmprestimo = DateTime.Now.Date;
             this.DataDevolucao = this.DataEmprestimo.AddDays(5);
         }

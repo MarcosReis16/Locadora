@@ -14,6 +14,12 @@ namespace LocadoraSolutis.Models
         public string CPFCliente { get; set; }
 
         public List<Aluguel> Alugueis { get; set; }
+
+        public Cliente(string nome, string cpf)
+        {
+            this.NomeCliente = nome;
+            this.CPFCliente = cpf;
+        }
         
     }
 }

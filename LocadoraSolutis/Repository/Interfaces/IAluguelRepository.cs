@@ -6,10 +6,15 @@ using System.Threading.Tasks;
 
 namespace LocadoraSolutis.Repository
 {
-    interface IAluguelRepository
+    public interface IAluguelRepository
     {
-        bool realizaEmprestimo(Aluguel aluguel);
-        bool renovaDataEmprestimo(string cpf);
-        bool realizaDevolucao(string cpf);
+        void CriarAluguel(Aluguel aluguel);
+        Aluguel AlterarAluguel(Aluguel aluguel);
+
+        IEnumerable<Aluguel> ObterAluguelPorCliente(int idCliente);
+
+        IEnumerable<Aluguel> ObterAluguelPendentePorCliente(int idCliente);
+
+        IEnumerable<Aluguel> ObterAluguelPendente();
     }
 }

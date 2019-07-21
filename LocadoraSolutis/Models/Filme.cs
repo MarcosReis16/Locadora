@@ -27,17 +27,17 @@ namespace LocadoraSolutis.Models
         public List<AluguelFilme> AluguelFilmes { get; set; }
 
 
-        //public Filme(int codigo, string nome, Genero genero, FaixaEtaria faixa, decimal valor, int qtd)
-        //{
+        public Filme(int codigo, string nome, Genero genero, FaixaEtaria faixa, decimal valor, int qtd)
+        {
 
-        //    this.CodigoFilme = codigo;
-        //    this.NomeFilme = nome;
-        //    this.GeneroFilme = genero;
-        //    this.FaixaEtariaFilme = faixa;
-        //    this.ValorEmprestimo = valor;
-        //    this.QtdEstoque = qtd;
+            this.CodigoFilme = codigo;
+            this.NomeFilme = nome;
+            this.GeneroFilme = genero;
+            this.FaixaEtariaFilme = faixa;
+            this.ValorEmprestimo = valor;
+            this.QtdEstoque = qtd;
 
-        //}
+        }
 
 
     }

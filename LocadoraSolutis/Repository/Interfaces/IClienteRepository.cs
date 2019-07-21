@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace LocadoraSolutis.Repository
 {
-    interface IClienteRepository
+    public interface IClienteRepository
     {
         void CadastraCliente(Cliente cliente);
         void EditaCliente(Cliente cliente);
         bool RemoveCliente(int codigo);
         IEnumerable<Cliente> RetornaBibliotecaClientes();
         IEnumerable<Cliente> RetornaClientesInadimplentes();
+
+        IEnumerable<Cliente> RetornaClientePorNome(string nome);
     }
 }

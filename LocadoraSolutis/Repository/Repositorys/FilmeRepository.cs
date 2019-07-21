@@ -1,9 +1,8 @@
 ﻿using LocadoraSolutis.Contexto;
+using LocadoraSolutis.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using LocadoraSolutis.Models;
 
 namespace LocadoraSolutis.Repository
 {
@@ -80,6 +79,8 @@ namespace LocadoraSolutis.Repository
         {
             return _context.Filmes.Where(m => m.QtdEstoque == 0).ToList();
         }
+
+
 
         
     }

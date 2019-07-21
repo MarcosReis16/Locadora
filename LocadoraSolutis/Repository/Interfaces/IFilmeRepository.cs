@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LocadoraSolutis.Repository
 {
-    interface IFilmeRepository
+    public interface IFilmeRepository
     {
         void CadastrarFilme(Filme filme);
         IEnumerable<Filme> RetornarBibliotecaFilmes();
