@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LocadoraSolutis.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/cliente")]
     [ApiController]
     public class ClienteController : ControllerBase
     {
@@ -39,7 +39,7 @@ namespace LocadoraSolutis.Controllers
             }
         }
 
-        [HttpGet("{nome}", Name = "Get")]
+        [HttpGet("{nome}", Name = "GetClienteNome")]
         public IActionResult Get(string nome)
         {
             try

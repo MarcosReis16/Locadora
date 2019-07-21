@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace LocadoraSolutis.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/filme")]
     [ApiController]
     public class FilmesController : ControllerBase
     {
@@ -39,7 +39,7 @@ namespace LocadoraSolutis.Controllers
         }
 
         // GET: api/Filmes/5
-        [HttpGet("{codigo}", Name = "Get")]
+        [HttpGet("{codigo}", Name = "GetFilmesCodigo")]
         public IActionResult Get(int codigo)
         {
             try

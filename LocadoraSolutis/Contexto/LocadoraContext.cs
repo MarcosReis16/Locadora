@@ -50,7 +50,9 @@ namespace LocadoraSolutis.Contexto
 
             //--------------------------------------------------------------------------------------------
 
-
+            modelBuilder.Entity<Cliente>()
+                .ToTable("Cliente");
+            
             modelBuilder.Entity<Cliente>()
                 .HasKey(m => m.IdCliente);
 

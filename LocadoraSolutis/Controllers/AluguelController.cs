@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LocadoraSolutis.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/aluguel")]
     [ApiController]
     public class AluguelController : ControllerBase
     {
