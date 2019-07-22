@@ -20,7 +20,9 @@ namespace LocadoraSolutis.Contexto
             modelBuilder.Entity<Filme>()
                 .ToTable("Filme");
 
-            modelBuilder.Entity<Filme>().HasKey("IdFilme");
+            modelBuilder.Entity<Filme>()
+                .HasKey(m => m.IdFilme)
+                .HasName("IdFilme");
 
             modelBuilder.Entity<Filme>().Property(m => m.NomeFilme)
                 .HasColumnName("NomeFilme")
@@ -54,7 +56,8 @@ namespace LocadoraSolutis.Contexto
                 .ToTable("Cliente");
             
             modelBuilder.Entity<Cliente>()
-                .HasKey(m => m.IdCliente);
+                .HasKey(m => m.IdCliente)
+                .HasName("IdCliente");
 
             modelBuilder.Entity<Cliente>().Property(m => m.NomeCliente)
                 .HasColumnName("NomeCliente")
@@ -69,7 +72,11 @@ namespace LocadoraSolutis.Contexto
             //------------------------------------------------------------------------------------------------
 
             modelBuilder.Entity<Aluguel>()
-                .HasKey(m => m.IdAluguel);
+                .ToTable("Aluguel");
+
+            modelBuilder.Entity<Aluguel>()
+                .HasKey(m => m.IdAluguel)
+                .HasName("IdAluguel");
 
             modelBuilder.Entity<Aluguel>()
                 .HasOne(m => m.Cliente)

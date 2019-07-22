@@ -10,10 +10,10 @@ namespace LocadoraSolutis.Models
     public class Aluguel
     {
         
+        [Key]
+        public Guid IdAluguel { get; set; }
         
-        public int IdAluguel { get; private set; }
-        
-        public int IdCliente { get; set; }
+        public Guid IdCliente { get; set; }
 
         public decimal ValorTotal { get; set; }
 
@@ -31,7 +31,7 @@ namespace LocadoraSolutis.Models
         {
 
         }
-        public Aluguel(int idCliente)
+        public Aluguel(Guid idCliente)
         {
             this.IdCliente = idCliente;
             this.StatusEmprestimo = true;
@@ -59,13 +59,19 @@ namespace LocadoraSolutis.Models
             {
                 this.AluguelFilmes.Add(new AluguelFilme(filme, this));
                 this.ValorTotal += filme.ValorEmprestimo;
+                filme.QtdEstoque -= 1;
 
             }
         }
 
-        public void RealizarDevolucao()
+        public void RealizarDevolucao(IEnumerable<Filme> filmes)
         {
             this.StatusEmprestimo = false;
+            foreach(var filme in filmes)
+            {
+                filme.QtdEstoque += 1;
+            }
+            
         }
     }
 }

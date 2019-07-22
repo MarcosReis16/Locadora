@@ -61,7 +61,7 @@ namespace LocadoraSolutis.Controllers
 
         // POST: api/Filmes
         [HttpPost]
-        public IActionResult Post(Filme filme)
+        public IActionResult Post([FromBody] Filme filme)
         {
             try
             {

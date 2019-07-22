@@ -18,48 +18,64 @@ namespace LocadoraSolutis.Repository
 
         public void CadastraCliente(Cliente cliente)
         {
-            try
+            using (var transacao = _context.Database.BeginTransaction())
             {
-                _context.Clientes.Add(cliente);
-                _context.SaveChanges();
-                
-            }
-            catch(Exception e)
-            {
-                throw new Exception(e.Message);
+                try
+                {
+                    _context.Clientes.Add(cliente);
+                    _context.SaveChanges();
+                    transacao.Commit();
+
+                }
+                catch(Exception e)
+                {
+                    throw new Exception(e.Message);
+                }
+
             }
             
         }
 
         public void EditaCliente(Cliente cliente)
         {
-            try
+            using(var transacao = _context.Database.BeginTransaction())
             {
-                _context.Clientes.Update(cliente);
-                _context.SaveChanges();
-            }
-            catch(Exception e)
-            {
-                throw new Exception(e.Message);
+                try
+                {
+                    _context.Clientes.Update(cliente);
+                    _context.SaveChanges();
+                    transacao.Commit();
+                }
+                catch(Exception e)
+                {
+                    throw new Exception(e.Message);
+                }
+
             }
         }
 
-        public bool RemoveCliente(int codigo)
+        public bool RemoveCliente(Guid idCliente)
         {
-            try
+            using(var transacao = _context.Database.BeginTransaction())
             {
-                var cliente = _context.Clientes.First(m => m.IdCliente == codigo);
-                if (cliente != null)
+                try
                 {
-                    _context.Clientes.Remove(cliente);
-                    _context.SaveChanges();
-                    return true;
+                    var cliente = _context.Clientes.First(m => m.IdCliente == idCliente);
+                    if (cliente != null)
+                    {
+                        _context.Clientes.Remove(cliente);
+                        _context.SaveChanges();
+                        transacao.Commit();
+                        return true;
+                    }
                 }
+                catch(Exception e)
+                {
+                    throw new Exception(e.Message);
+                }
+
             }
-            catch(Exception e)
-            {
-                throw new Exception(e.Message);
-            }
+
             return false;
             
         }

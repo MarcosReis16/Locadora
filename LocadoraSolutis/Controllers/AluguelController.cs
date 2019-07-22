@@ -13,36 +13,52 @@ namespace LocadoraSolutis.Controllers
     [ApiController]
     public class AluguelController : ControllerBase
     {
-        private readonly IAluguelRepository _repository;
+        private readonly IAluguelRepository _repositoryAluguel;
+        private readonly IFilmeRepository _repositoryFilme;
+        
 
-        public AluguelController(IAluguelRepository repository)
+        public AluguelController(IAluguelRepository repositoryAluguel, IFilmeRepository repositoryFilme)
         {
-            _repository = repository;
+            _repositoryAluguel = repositoryAluguel;
+            _repositoryFilme = repositoryFilme;
         }
 
         // GET: api/Aluguel
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            var alugueis = _repositoryAluguel.ObterAlugueis();
+            if (alugueis.Any())
+                return Ok(alugueis);
+            return NotFound();
         }
 
         // GET: api/Aluguel/5
         [HttpGet("{id}", Name = "GetAluguelCliente")]
-        public string Get(int id)
+        public IActionResult Get(Guid idCliente)
         {
-            return "value";
+            var alugueis = _repositoryAluguel.ObterAluguelPorCliente(idCliente);
+
+            if(alugueis.Any())
+                return Ok(alugueis);
+
+            return NotFound(idCliente);
         }
 
         // POST: api/Aluguel
         [HttpPost]
-        public IActionResult Post(int idCliente, IEnumerable<Filme> filmes)
+        public IActionResult Post(Guid idCliente, [FromBody] IEnumerable<Filme> filmes)
         {
             try
             {
                 Aluguel aluguel = new Aluguel(idCliente);
                 aluguel.RealizarEmprestimo(filmes);
-                _repository.CriarAluguel(aluguel);
+                aluguel = _repositoryAluguel.CriarAluguel(aluguel);
+                filmes = aluguel.AluguelFilmes.Select(m => m.Filme).ToList();
+                foreach (var filme in filmes)
+                {
+                    _repositoryFilme.EditarFilme(filme);
+                }
                 return Ok(aluguel);
             }
             catch(Exception e)
@@ -52,18 +68,27 @@ namespace LocadoraSolutis.Controllers
         }
 
         // PUT: api/Aluguel/5
-        [HttpPut("{id}")]
-        public IActionResult Put(Aluguel aluguel, bool renovar)
+        [HttpPut]
+        public IActionResult Put(Guid idAluguel, bool renovar)
         {
             try
             {
+                var aluguel = _repositoryAluguel.ObterAluguelPorId(idAluguel);
                 if (!renovar)
-                    aluguel.RealizarDevolucao();
+                {
+                    var filmes = aluguel.AluguelFilmes.Select(m => m.Filme).ToList();
+                    aluguel.RealizarDevolucao(filmes);
+                    foreach(var filme in filmes)
+                    {
+                        _repositoryFilme.EditarFilme(filme);
+                    }
+                    
+                }
 
                 else
                     aluguel.RenovarEmprestimo();
 
-                _repository.AlterarAluguel(aluguel);
+                _repositoryAluguel.AlterarAluguel(aluguel);
 
                 return Ok(aluguel);
             }

@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using LocadoraSolutis.Contexto;
+﻿using LocadoraSolutis.Contexto;
+using LocadoraSolutis.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using LocadoraSolutis.Repository;
+using Microsoft.OpenApi.Models;
+using System;
 
 namespace LocadoraSolutis
 {
@@ -35,6 +30,28 @@ namespace LocadoraSolutis
             services.AddScoped<IFilmeRepository, FilmeRepository>();
             services.AddScoped<IAluguelRepository, AluguelRepository>();
 
+            // Register the Swagger generator, defining 1 or more Swagger documents
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "Locadora Solutis - API",
+                    Description = "API de EFuncionamento de uma locadora de filmes",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Marcos Reis",
+                        Email = "marcossummers@gmail.com",
+                        Url = new Uri("https://github.com/MarcosReis16"),
+                    },
+                    License = new OpenApiLicense
+                    {
+                        Name = "MIT",
+                        Url = new Uri("https://opensource.org/licenses/MIT"),
+                    }
+                });
+            });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -52,6 +69,20 @@ namespace LocadoraSolutis
             }
 
             app.UseHttpsRedirection();
+
+            // Enable middleware to serve generated Swagger as a JSON endpoint.
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.RoutePrefix = string.Empty;
+
+            });
+
+
             app.UseMvc();
         }
     }

@@ -17,29 +17,39 @@ namespace LocadoraSolutis.Repository
 
         public void CadastrarFilme(Filme filme)
         {
-            try
+            using(var transacao = _context.Database.BeginTransaction())
             {
-                _context.Filmes.Add(filme);
-                _context.SaveChanges();
-                
-            }
-            catch(Exception e)
-            {
-                throw new Exception(e.Message);
+                try
+                {
+                    _context.Filmes.Add(filme);
+                    _context.SaveChanges();
+                    transacao.Commit();
+
+                }
+                catch(Exception e)
+                {
+                    throw new Exception(e.Message);
+                }
+
             }
 
         }
 
         public void EditarFilme(Filme filme)
         {
-            try
+            using(var transacao = _context.Database.BeginTransaction())
             {
-                _context.Filmes.Update(filme);
-                _context.SaveChanges();
-            }
-            catch(Exception e)
-            {
-                throw new Exception(e.Message);
+                try
+                {
+                    _context.Filmes.Update(filme);
+                    _context.SaveChanges();
+                    transacao.Commit();
+                }
+                catch(Exception e)
+                {
+                    throw new Exception(e.Message);
+                }
+
             }
             
         }
@@ -52,19 +62,24 @@ namespace LocadoraSolutis.Repository
 
         public bool RemoverFilme(int codigo)
         {
-            try
+            using(var transacao = _context.Database.BeginTransaction())
             {
-                var filme = _context.Filmes.First(m => m.CodigoFilme == codigo);
-                if(filme != null)
+
+                try
                 {
-                    _context.Filmes.Remove(filme);
-                    _context.SaveChanges();
-                    return true;
+                    var filme = _context.Filmes.First(m => m.CodigoFilme == codigo);
+                    if(filme != null)
+                    {
+                        _context.Filmes.Remove(filme);
+                        _context.SaveChanges();
+                        transacao.Commit();
+                        return true;
+                    }
                 }
-            }
-            catch(Exception e)
-            {
-                throw new Exception(e.Message);
+                catch(Exception e)
+                {
+                    throw new Exception(e.Message);
+                }
             }
             return false;
             

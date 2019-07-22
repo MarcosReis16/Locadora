@@ -9,8 +9,8 @@ namespace LocadoraSolutis.Models
 {
     public class Filme
     {
-        
-        public int IdFilme { get; set; }
+        [Key]
+        public Guid IdFilme { get; set; }
 
         public int CodigoFilme { get; set; }
 

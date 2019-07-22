@@ -60,7 +60,7 @@ namespace LocadoraSolutis.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post(Cliente cliente)
+        public IActionResult Post([FromBody] Cliente cliente)
         {
             try
             {
@@ -90,16 +90,16 @@ namespace LocadoraSolutis.Controllers
 
         
         [HttpDelete("{codigo}")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(Guid idCliente)
         {
             try
             {
-                var apagou = _repository.RemoveCliente(id);
+                var apagou = _repository.RemoveCliente(idCliente);
 
                 if (apagou)
                     return Ok();
 
-                return NotFound(id);
+                return NotFound(idCliente);
             }
             catch (Exception e)
             {
