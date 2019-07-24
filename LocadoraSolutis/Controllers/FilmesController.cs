@@ -1,10 +1,10 @@
-﻿using LocadoraSolutis.Models;
-using LocadoraSolutis.Repository;
+﻿using Locadora.Models;
+using Locadora.Repository;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
 
-namespace LocadoraSolutis.Controllers
+namespace Locadora.Controllers
 {
     [Route("api/filme")]
     [ApiController]

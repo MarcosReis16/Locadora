@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace LocadoraSolutis.Auxiliares
+namespace Locadora.Auxiliares
 {
     public enum Genero : int
     {

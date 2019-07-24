@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using LocadoraSolutis.Models;
-using LocadoraSolutis.Repository;
+using Locadora.Models;
+using Locadora.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace LocadoraSolutis.Controllers
+namespace Locadora.Controllers
 {
     [Route("api/cliente")]
     [ApiController]

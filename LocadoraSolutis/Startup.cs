@@ -1,5 +1,5 @@
-﻿using LocadoraSolutis.Contexto;
-using LocadoraSolutis.Repository;
+﻿using Locadora.Contexto;
+using Locadora.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -9,7 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using System;
 
-namespace LocadoraSolutis
+namespace Locadora
 {
     public class Startup
     {

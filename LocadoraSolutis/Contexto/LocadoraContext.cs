@@ -1,7 +1,7 @@
-﻿using LocadoraSolutis.Models;
+﻿using Locadora.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace LocadoraSolutis.Contexto
+namespace Locadora.Contexto
 {
     public class LocadoraContext : DbContext
     {

@@ -1,10 +1,10 @@
-﻿using LocadoraSolutis.Models;
+﻿using Locadora.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace LocadoraSolutis.Repository
+namespace Locadora.Repository
 {
     public interface IFilmeRepository
     {

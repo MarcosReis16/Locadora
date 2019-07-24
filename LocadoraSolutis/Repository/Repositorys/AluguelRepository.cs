@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using LocadoraSolutis.Contexto;
-using LocadoraSolutis.Models;
+using Locadora.Contexto;
+using Locadora.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace LocadoraSolutis.Repository
+namespace Locadora.Repository
 {
     public class AluguelRepository : IAluguelRepository
     {

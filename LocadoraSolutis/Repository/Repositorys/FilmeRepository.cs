@@ -1,10 +1,10 @@
-﻿using LocadoraSolutis.Contexto;
-using LocadoraSolutis.Models;
+﻿using Locadora.Contexto;
+using Locadora.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace LocadoraSolutis.Repository
+namespace Locadora.Repository
 {
     public class FilmeRepository : IFilmeRepository
     {

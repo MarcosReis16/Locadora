@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using LocadoraSolutis.Auxiliares;
+using Locadora.Auxiliares;
 
-namespace LocadoraSolutis.Models
+namespace Locadora.Models
 {
     public class Filme
     {

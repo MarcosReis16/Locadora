@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using LocadoraSolutis.Contexto;
-using LocadoraSolutis.Models;
+using Locadora.Contexto;
+using Locadora.Models;
 
-namespace LocadoraSolutis.Repository
+namespace Locadora.Repository
 {
     public class ClienteRepository : IClienteRepository
     {
